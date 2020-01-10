@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -14,9 +16,20 @@ namespace WorkTimeRecord
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Mutex m = new Mutex(false, "Product_Index_Cntvs", out bool bCreatedNew);
+            if (bCreatedNew)
+            {
+                SystemEvents.SessionSwitch += new
+                SessionSwitchEventHandler(FileOperations.FileOperationsClass.SystemEvents_SessionSwitch);
+
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new MainMenu());
+            }
+            else
+            {
+                MessageBox.Show("该程序已经在运行");
+            }
         }
     }
 }
