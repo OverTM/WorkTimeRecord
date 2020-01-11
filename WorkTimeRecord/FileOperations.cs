@@ -70,6 +70,7 @@ namespace FileOperations
                 file.WriteLine(UnLock + sDateTime);
                 file.Close();
             }
+
             ReadLog();
         }
 

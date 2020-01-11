@@ -57,6 +57,7 @@
             this.StartTimeLabel2.Name = "StartTimeLabel2";
             this.StartTimeLabel2.Size = new System.Drawing.Size(0, 33);
             this.StartTimeLabel2.TabIndex = 1;
+            this.StartTimeLabel2.Text = FileOperations.FileOperationsClass.StartWorkTime;
             // 
             // notifyIcon
             // 

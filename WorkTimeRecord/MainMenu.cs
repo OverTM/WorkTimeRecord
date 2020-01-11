@@ -14,6 +14,12 @@ namespace WorkTimeRecord
     {
         public MainMenu()
         {
+            //SNTPTime.SNTPTimeClient client = new SNTPTime.SNTPTimeClient("10.8.1.108", "123");
+            //client.Connect();
+            //string strTest = client.ToString();
+
+            //string Text = SNTPTime.SNTPTimeClient.GetBeijingTime().ToString();
+
             FileOperations.FileOperationsClass.StartWorkTime = Settings.Default.StartWorkTime == "" ? "Not found" : Settings.Default.StartWorkTime;
             InitializeComponent();
         }
@@ -35,8 +41,6 @@ namespace WorkTimeRecord
             this.Activate();
         }
 
-        string a = "";
-        string b = "";
         private void MainMenu_Load(object sender, EventArgs e)
         {
             if (Settings.Default.savePath == "")
