@@ -16,7 +16,8 @@ namespace WorkTimeRecord
         [STAThread]
         static void Main()
         {
-            Mutex m = new Mutex(false, "Product_Index_Cntvs", out bool bCreatedNew);
+            bool bCreatedNew;
+            Mutex m = new Mutex(false, "Product_Index_Cntvs", out bCreatedNew);
             if (bCreatedNew)
             {
                 SystemEvents.SessionSwitch += new

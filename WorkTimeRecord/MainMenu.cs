@@ -14,6 +14,7 @@ namespace WorkTimeRecord
     {
         public MainMenu()
         {
+            FileOperations.FileOperationsClass.StartWorkTime = Settings.Default.StartWorkTime == "" ? "Not found" : Settings.Default.StartWorkTime;
             InitializeComponent();
         }
 
@@ -38,9 +39,15 @@ namespace WorkTimeRecord
         string b = "";
         private void MainMenu_Load(object sender, EventArgs e)
         {
-            FileOperations.FileOperationsClass.savePath = Settings.Default.savePath;
-            FileOperations.FileOperationsClass.StartWorkTime = Settings.Default.StartWorkTime;
-            a = Settings.Default.a;
+            if (Settings.Default.savePath == "")
+            {
+                MessageBox.Show("需要先设置log文件路径才能使用");
+            }
+            else
+            {
+                FileOperations.FileOperationsClass.savePath = Settings.Default.savePath;
+            }
+
             this.Location = new Point(1300, 0);
         }
 
@@ -48,7 +55,7 @@ namespace WorkTimeRecord
         {
             Settings.Default.savePath = FileOperations.FileOperationsClass.savePath;
             Settings.Default.StartWorkTime = FileOperations.FileOperationsClass.StartWorkTime;
-            Settings.Default.a = a;
+            Settings.Default.Save();
         }
     }
 }
