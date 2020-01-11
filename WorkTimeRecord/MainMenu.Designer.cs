@@ -42,22 +42,22 @@
             // StartTimeLabel1
             // 
             this.StartTimeLabel1.AutoSize = true;
-            this.StartTimeLabel1.Font = new System.Drawing.Font("方正舒体", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.StartTimeLabel1.Font = new System.Drawing.Font("方正舒体", 25F);
             this.StartTimeLabel1.Location = new System.Drawing.Point(39, 38);
             this.StartTimeLabel1.Name = "StartTimeLabel1";
-            this.StartTimeLabel1.Size = new System.Drawing.Size(157, 22);
+            this.StartTimeLabel1.Size = new System.Drawing.Size(253, 36);
             this.StartTimeLabel1.TabIndex = 0;
             this.StartTimeLabel1.Text = "上班开始时间：";
             // 
             // StartTimeLabel2
             // 
             this.StartTimeLabel2.AutoSize = true;
-            this.StartTimeLabel2.Font = new System.Drawing.Font("方正舒体", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.StartTimeLabel2.Location = new System.Drawing.Point(185, 38);
+            this.StartTimeLabel2.Font = new System.Drawing.Font("方正舒体", 25F);
+            this.StartTimeLabel2.Location = new System.Drawing.Point(263, 38);
             this.StartTimeLabel2.Name = "StartTimeLabel2";
-            this.StartTimeLabel2.Size = new System.Drawing.Size(0, 22);
+            this.StartTimeLabel2.Size = new System.Drawing.Size(165, 36);
             this.StartTimeLabel2.TabIndex = 1;
-            this.StartTimeLabel2.Text = Settings.Default.StartWorkTime;
+            this.StartTimeLabel2.Text = "not found";
             // 
             // notifyIcon
             // 
@@ -101,6 +101,7 @@
             this.Name = "MainMenu";
             this.ShowInTaskbar = false;
             this.Text = "Form1";
+            this.TransparencyKey = System.Drawing.Color.White;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainMenu_FormClosing);
             this.Load += new System.EventHandler(this.MainMenu_Load);
             this.contextMenuStrip.ResumeLayout(false);
