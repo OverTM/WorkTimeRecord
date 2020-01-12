@@ -20,9 +20,6 @@ namespace WorkTimeRecord
             Mutex m = new Mutex(false, "Product_Index_Cntvs", out bCreatedNew);
             if (bCreatedNew)
             {
-                SystemEvents.SessionSwitch += new
-                SessionSwitchEventHandler(StatusMonitor.SystemEvents_SessionSwitch);
-
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 Application.Run(new MainMenu());
@@ -30,12 +27,6 @@ namespace WorkTimeRecord
             else
             {
                 MessageBox.Show("该程序已经在运行");
-                SystemEvents.SessionSwitch += new
-                SessionSwitchEventHandler(StatusMonitor.SystemEvents_SessionSwitch);
-
-                Application.EnableVisualStyles();
-                Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new MainMenu());
             }
         }
     }
