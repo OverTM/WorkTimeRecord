@@ -47,12 +47,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FileOperations.cs" />
-    <Compile Include="GetNetDateTime.cs" />
-    <Compile Include="MainMenu.cs">
+    <Compile Include="Get\GetIni.cs" />
+    <Compile Include="Get\GlobalVariables.cs" />
+    <Compile Include="Forms\SettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainMenu.Designer.cs">
+    <Compile Include="Forms\SettingsForm.Designer.cs">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utility\StatusMonitor.cs" />
+    <Compile Include="Utility\FileOperations.cs" />
+    <Compile Include="Get\GetNetDateTime.cs" />
+    <Compile Include="Get\GetTime.cs" />
+    <Compile Include="Forms\MainMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainMenu.Designer.cs">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -62,7 +72,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="MainMenu.resx">
+    <Compile Include="Utility\MainSettings.cs" />
+    <EmbeddedResource Include="Forms\MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -75,6 +86,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Forms\SettingsForm.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

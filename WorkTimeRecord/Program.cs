@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
-using System.Threading.Tasks;
+using Utility;
 using System.Windows.Forms;
 
 namespace WorkTimeRecord
@@ -21,7 +21,7 @@ namespace WorkTimeRecord
             if (bCreatedNew)
             {
                 SystemEvents.SessionSwitch += new
-                SessionSwitchEventHandler(FileOperations.FileOperationsClass.SystemEvents_SessionSwitch);
+                SessionSwitchEventHandler(StatusMonitor.SystemEvents_SessionSwitch);
 
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
@@ -30,6 +30,12 @@ namespace WorkTimeRecord
             else
             {
                 MessageBox.Show("该程序已经在运行");
+                SystemEvents.SessionSwitch += new
+                SessionSwitchEventHandler(StatusMonitor.SystemEvents_SessionSwitch);
+
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new MainMenu());
             }
         }
     }

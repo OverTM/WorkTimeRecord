@@ -2,13 +2,13 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="WorkTimeRecord" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="savePath" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+    <Setting Name="isFirstStart" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="StartWorkTime" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="a" Type="System.String" Scope="User">
+    <Setting Name="SavePath" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
   </Settings>
