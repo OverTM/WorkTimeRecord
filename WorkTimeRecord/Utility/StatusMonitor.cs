@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using Get;
+using System.Threading;
 
 namespace Utility
 {
@@ -31,36 +32,49 @@ namespace Utility
         }
 
         #region 键盘和鼠标没有操作所经过的时间
-        // 创建结构体用于返回捕获时间
+        /// <summary>
+        /// 创建结构体用于返回捕获时间
+        /// </summary>
         [StructLayout(LayoutKind.Sequential)]
         struct LASTINPUTINFO
         {
-            // 设置结构体块容量
+            /// <summary>
+            /// 设置结构体块容量
+            /// </summary>
             [MarshalAs(UnmanagedType.U4)]
             public int cbSize;
-            // 捕获的时间
+
+            /// <summary>
+            /// 抓获的时间
+            /// </summary>
             [MarshalAs(UnmanagedType.U4)]
             public uint dwTime;
         }
 
+        [DllImport("user32.dll")]
         private static extern bool GetLastInputInfo(ref LASTINPUTINFO plii);
-
         /// <summary>
-        /// 获取键盘和鼠标没有操作所经过的时间
+        /// 获取键盘和鼠标没有操作的时间
         /// </summary>
-        /// <returns>键盘和鼠标没有操作所经过的时间 (单位:毫秒) </returns>
+        /// <returns>用户上次使用系统到现在的时间间隔，单位为秒</returns>
         public static long GetLastInputTime()
         {
             LASTINPUTINFO vLastInputInfo = new LASTINPUTINFO();
             vLastInputInfo.cbSize = Marshal.SizeOf(vLastInputInfo);
-            // 捕获时间
             if (!GetLastInputInfo(ref vLastInputInfo))
+            {
                 return 0;
+            }
             else
-                return Environment.TickCount - (long)vLastInputInfo.dwTime;
+            {
+                long count = Environment.TickCount - (long)vLastInputInfo.dwTime;
+                long icount = count / 1000;
+                return icount;
+            }
         }
         #endregion
-        private void TriggerMethod(object sender, EventArgs e)
+
+        public static void TriggerMethod()
         {
             if(GlobalVariables.TriggerMethod == "1")
             {
@@ -71,8 +85,14 @@ namespace Utility
             {
                 while (true)
                 {
-                    //Thread.Sleep(2000);//10秒
+                    Thread.Sleep(2000);//10秒
                     long a = GetLastInputTime();
+                    if (a>1)
+                    {
+                        FileOperations.Start();
+                    }
+                    else
+                        FileOperations.End();
                 }
             }
         }

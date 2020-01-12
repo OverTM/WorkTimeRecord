@@ -12,7 +12,7 @@ namespace Utility
         /// <summary>
         /// ini文件路径
         /// </summary>
-        string file = "E:\\WorkSapce\\WorkTimeRecord\\setting_and_log\\TestIni.ini";
+        string file = GlobalVariables.SavePath + "//Settings.ini";
         
         /// <summary>
         /// 恢复默认设置

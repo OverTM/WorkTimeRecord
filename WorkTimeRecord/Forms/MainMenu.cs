@@ -14,6 +14,16 @@ namespace WorkTimeRecord
     {
         public MainMenu()
         {
+            if (Settings.Default.SavePath == "")
+            {
+                FileOperations.SelectFolder();
+            }
+            else
+            {
+                GlobalVariables.SavePath = Settings.Default.SavePath;
+            }
+            MainSettings settings = new MainSettings();
+            settings.RemoveComments();
             GlobalVariables.StartWorkTime = Settings.Default.StartWorkTime == "" ? "Not found" : Settings.Default.StartWorkTime;
             InitializeComponent();
         }
@@ -38,19 +48,9 @@ namespace WorkTimeRecord
 
         private void MainMenu_Load(object sender, EventArgs e)
         {
-            if (Settings.Default.isFirstStart)
-            {
-                Settings.Default.isFirstStart = false;
-                Settings.Default.Save();
-                MessageBox.Show("需要先文件保存路径才能使用");
-                FileOperations.SelectFolder();
-            }
-            else
-            {
-                GlobalVariables.SavePath = Settings.Default.SavePath;
-            }
             this.Top = int.Parse(GlobalVariables.MainLocationY);
             this.Left = int.Parse(GlobalVariables.MainLocationX);
+            Utility.StatusMonitor.TriggerMethod();
         }
 
         private void MainMenu_FormClosing(object sender, FormClosingEventArgs e)
@@ -59,20 +59,6 @@ namespace WorkTimeRecord
             Settings.Default.StartWorkTime = GlobalVariables.StartWorkTime;
             Settings.Default.SavePath = GlobalVariables.SavePath;
             Settings.Default.Save();
-        }
-        
-        private void 本机时间ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            GlobalVariables.isLocalTime = true;
-            (sender as ToolStripMenuItem).Checked = true;
-            网络时间ToolStripMenuItem.Checked = false;
-        }
-
-        private void 网络时间ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            GlobalVariables.isLocalTime = false;
-            (sender as ToolStripMenuItem).Checked = true;
-            本机时间ToolStripMenuItem.Checked = false;
         }
     }
 }

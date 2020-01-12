@@ -26,16 +26,22 @@ namespace Utility
         public static void SelectFolder()
         {
             FolderBrowserDialog dialog = new FolderBrowserDialog();
-            dialog.Description = "请选择文件路径";
+            dialog.Description = "请选择配置文件保存路径";
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 GlobalVariables.SavePath = dialog.SelectedPath;
-                GlobalVariables.SavePath = GlobalVariables.SavePath.Replace(@"\", "/");
-                MainSettings settings = new MainSettings();
-                MessageBox.Show("设置完需要重启软件,正在重启");
-                settings.RestoreDefaultSettings();
-                settings.RemoveComments();
-                Restart();
+                GlobalVariables.SavePath = GlobalVariables.SavePath.Replace(@"\", "//");
+                DialogResult result = MessageBox.Show("是否需要下当前路径下生成一个设置文件？\n如果当前路径下没有设置文件，请选择是，将按默认设置生成一个文件。", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (result == DialogResult.Yes)
+                {
+                    //相应的逻辑处理
+                    MainSettings settings = new MainSettings();
+                    settings.RestoreDefaultSettings();
+                }
+                else
+                {
+                    //相应的逻辑处理
+                }
             }
             else
             {
@@ -45,7 +51,7 @@ namespace Utility
         }
         
         /// <summary>
-        /// 重启程序1
+        /// 重启程序
         /// </summary>
         private static void Restart()
         {
@@ -58,7 +64,7 @@ namespace Utility
         }
 
         /// <summary>
-        /// 重启程序2
+        /// 重启程序
         /// </summary>
         /// <param name="obj"></param>
         private static void Run(Object obj)
@@ -69,12 +75,12 @@ namespace Utility
         }
 
         /// <summary>
-        /// 屏幕锁定后的操作
+        /// 工作开始后的操作
         /// </summary>
         public static void Start()
         {
             string sDateTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:sss");
-            string Lock = "锁定时间：";
+            string Lock = "工作开始时间：";
             using (System.IO.StreamWriter file = new System.IO.StreamWriter(GlobalVariables.SavePath + "/log.txt", true))
             {
                 file.WriteLine(Lock + sDateTime);
@@ -83,12 +89,12 @@ namespace Utility
         }
 
         /// <summary>
-        /// 屏幕解锁后的操作
+        /// 工作结束后的操作
         /// </summary>
         public static void End()
         {
             string sDateTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:sss");
-            string UnLock = "解锁时间：";
+            string UnLock = "工作结束时间：";
             using (System.IO.StreamWriter file = new System.IO.StreamWriter(GlobalVariables.SavePath + "/log.txt", true))
             {
                 file.WriteLine(UnLock + sDateTime);

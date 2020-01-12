@@ -35,9 +35,6 @@
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.设置log路径ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.时间ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.本机时间ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.网络时间ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -60,6 +57,7 @@
             this.StartTimeLabel2.Name = "StartTimeLabel2";
             this.StartTimeLabel2.Size = new System.Drawing.Size(0, 38);
             this.StartTimeLabel2.TabIndex = 1;
+            this.StartTimeLabel2.Text = Get.GlobalVariables.StartWorkTime;
             // 
             // notifyIcon
             // 
@@ -73,45 +71,21 @@
             // 
             this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.设置log路径ToolStripMenuItem,
-            this.时间ToolStripMenuItem,
             this.退出ToolStripMenuItem});
             this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(101, 70);
+            this.contextMenuStrip.Size = new System.Drawing.Size(181, 70);
             // 
             // 设置log路径ToolStripMenuItem
             // 
             this.设置log路径ToolStripMenuItem.Name = "设置log路径ToolStripMenuItem";
-            this.设置log路径ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.设置log路径ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.设置log路径ToolStripMenuItem.Text = "设置";
             this.设置log路径ToolStripMenuItem.Click += new System.EventHandler(this.设置log路径ToolStripMenuItem_Click);
-            // 
-            // 时间ToolStripMenuItem
-            // 
-            this.时间ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.本机时间ToolStripMenuItem,
-            this.网络时间ToolStripMenuItem});
-            this.时间ToolStripMenuItem.Name = "时间ToolStripMenuItem";
-            this.时间ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
-            this.时间ToolStripMenuItem.Text = "时间";
-            // 
-            // 本机时间ToolStripMenuItem
-            // 
-            this.本机时间ToolStripMenuItem.Name = "本机时间ToolStripMenuItem";
-            this.本机时间ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.本机时间ToolStripMenuItem.Text = "本机时间";
-            this.本机时间ToolStripMenuItem.Click += new System.EventHandler(this.本机时间ToolStripMenuItem_Click);
-            // 
-            // 网络时间ToolStripMenuItem
-            // 
-            this.网络时间ToolStripMenuItem.Name = "网络时间ToolStripMenuItem";
-            this.网络时间ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.网络时间ToolStripMenuItem.Text = "网络时间";
-            this.网络时间ToolStripMenuItem.Click += new System.EventHandler(this.网络时间ToolStripMenuItem_Click);
             // 
             // 退出ToolStripMenuItem
             // 
             this.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
-            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.退出ToolStripMenuItem.Text = "退出";
             this.退出ToolStripMenuItem.Click += new System.EventHandler(this.退出ToolStripMenuItem_Click);
             // 
@@ -144,9 +118,6 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem 设置log路径ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 退出ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 时间ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 本机时间ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 网络时间ToolStripMenuItem;
     }
 }
 
