@@ -24,6 +24,7 @@ namespace WorkTimeRecord
             }
             MainSettings settings = new MainSettings();
             settings.RemoveComments();
+            GetTime.GetSelectedTime();
             GlobalVariables.StartWorkTime = Settings.Default.StartWorkTime == "" ? "Not found" : Settings.Default.StartWorkTime;
             InitializeComponent();
         }

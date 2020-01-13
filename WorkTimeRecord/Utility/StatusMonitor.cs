@@ -85,7 +85,7 @@ namespace Utility
             {
                 while (true)
                 {
-                    Thread.Sleep(2000);//10秒
+                    Thread.Sleep(2000);//2秒
                     long a = GetLastInputTime();
                     if (a>1)
                     {
