@@ -14,6 +14,7 @@ using System.Timers;
 using Microsoft.Win32;
 using Get;
 using System.Threading;
+using WorkTimeRecord;
 
 namespace Utility
 {
@@ -79,11 +80,11 @@ namespace Utility
         /// </summary>
         public static void Start()
         {
-            string sDateTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:sss");
+            GetTime.GetSelectedTime();
             string Lock = "工作开始时间：";
             using (System.IO.StreamWriter file = new System.IO.StreamWriter(GlobalVariables.SavePath + "/log.txt", true))
             {
-                file.WriteLine(Lock + sDateTime);
+                file.WriteLine(Lock + NowTime.FullTime);
                 file.Close();
             }
         }
@@ -93,14 +94,13 @@ namespace Utility
         /// </summary>
         public static void End()
         {
-            string sDateTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:sss");
+            GetTime.GetSelectedTime();
             string UnLock = "工作结束时间：";
             using (System.IO.StreamWriter file = new System.IO.StreamWriter(GlobalVariables.SavePath + "/log.txt", true))
             {
-                file.WriteLine(UnLock + sDateTime);
+                file.WriteLine(UnLock + NowTime.FullTime);
                 file.Close();
             }
-
             ReadLog();
         }
 
@@ -109,17 +109,16 @@ namespace Utility
         /// </summary>
         public static void ReadLog()
         {
-            string sDate = DateTime.Today.ToString("yyyy-MM-dd");
-            string EndWork = "";
+            string EndWorkTime = "Not found";
             StreamReader sr = new StreamReader(GlobalVariables.SavePath + "/log.txt");
             bool flag = false;
+            string lasttime = "not found";
             while (!sr.EndOfStream)
             {
                 string[] date;
-                string lasttime = "not found";
                 string tempdate = sr.ReadLine();
                 date = tempdate.Split(new char[] { '：', ' ' }, StringSplitOptions.RemoveEmptyEntries);
-                if (date[1] == sDate)
+                if (date[1] == NowTime.YearMonthDay)
                 {
                     GlobalVariables.StartWorkTime = date[1] + " " + date[2];
                     flag = true;
@@ -128,19 +127,50 @@ namespace Utility
                 else
                 {
                     lasttime = date[1] + " " + date[2];
-                    flag = true;
-                    EndWork = lasttime;
+                    flag = false;
+                    EndWorkTime = lasttime;
                 }
             }
             sr.Close();
             if (flag)
             {
-                using (System.IO.StreamWriter file = new System.IO.StreamWriter(GlobalVariables.SavePath + "/kaoqin.txt", true))
+                bool WriteInToKaoqin = false;
+                if (File.Exists(GlobalVariables.SavePath + "/kaoqin.txt"))
                 {
-                    file.WriteLine("下班时间：" + EndWork);
-                    file.WriteLine(sDate);
-                    file.WriteLine("上班时间：" + GlobalVariables.StartWorkTime);
-                    file.Close();
+                    StreamReader kq = new StreamReader(GlobalVariables.SavePath + "/kaoqin.txt");
+                    while(!kq.EndOfStream)
+                    {
+                        string[] date;
+                        string tempdate = kq.ReadLine();
+                        date = tempdate.Split(new char[] { '：', ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                        if(date[1] == NowTime.YearMonthDay)
+                        {
+                            WriteInToKaoqin = false;
+                            break;
+                        }
+                        else
+                        {
+                            WriteInToKaoqin = true;
+                        }
+                    }
+                    kq.Close();
+                }
+                else
+                {
+                    WriteInToKaoqin = true;
+                }
+                
+                if(WriteInToKaoqin)
+                {
+                    using (System.IO.StreamWriter kq = new System.IO.StreamWriter(GlobalVariables.SavePath + "/kaoqin.txt", true))
+                    {
+                        kq.WriteLine("下班时间：" + EndWorkTime);
+                        kq.WriteLine("上班时间：" + GlobalVariables.StartWorkTime);
+                        kq.Close();
+                        Settings.Default.StartWorkTime = GlobalVariables.StartWorkTime;
+                        Settings.Default.Save();
+                        WorkTimeRecord.MainMenu.UpDataForm();
+                    }
                 }
             }
         }

@@ -24,14 +24,29 @@ namespace Get
         /// </summary>
         public static string StartWorkTime = "not found";
         #endregion
-        
+
         /// <summary>
         /// ini文件内的设置变量
         /// </summary>
-        public static string LogPath, Website, MainLocationX, MainLocationY, TriggerMethod;
+        public static string LogPath, TimeObtain, LocalIP, Website, MainLocationX, MainLocationY, TriggerMethod;
+    }
+
+    /// <summary>
+    /// 时间
+    /// </summary>
+    static class NowTime
+    {
         /// <summary>
-        /// ini文件内的布尔设置变量
+        /// 年月日时分秒
         /// </summary>
-        public static bool isLocalTime;
+        public static string FullTime;
+        /// <summary>
+        /// 年月日
+        /// </summary>
+        public static string YearMonthDay;
+        /// <summary>
+        /// 时分秒
+        /// </summary>
+        public static string HourMinuteSecond;
     }
 }

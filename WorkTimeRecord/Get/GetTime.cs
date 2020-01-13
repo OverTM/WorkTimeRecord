@@ -41,7 +41,7 @@ namespace Get
         #endregion
 
         #region 调用CMD获取局域网指定电脑时间
-        public static void GetLocalNetworkTime()
+        public static string GetLocalNetworkTime()
         {
             System.Diagnostics.Process p = new System.Diagnostics.Process();
             p.StartInfo.FileName = "cmd.exe";
@@ -53,7 +53,7 @@ namespace Get
             p.Start();//启动程序
 
             //向cmd窗口发送输入信息
-            p.StandardInput.WriteLine(@"net time \\10.8.1.196" + "&exit");
+            p.StandardInput.WriteLine(@"net time" + @GlobalVariables.LocalIP + "&exit");
 
             p.StandardInput.AutoFlush = true;
             //p.StandardInput.WriteLine("exit");
@@ -75,33 +75,32 @@ namespace Get
             p.Close();
 
             output = output.Split(new char[] { 'は', 'で' }, StringSplitOptions.RemoveEmptyEntries)[1];
+            return output;
         }
         #endregion
 
+        /// <summary>
+        /// 刷新 NowTime
+        /// </summary>
         public static void GetSelectedTime()
         {
-            DateTime DataTimeNowTime = GlobalVariables.isLocalTime ? DateTime.Now : GetBeijingTime();
-            string fullTime = DataTimeNowTime.ToString();
-            string[] ArrayTime = fullTime.Split(new char[] { '/', ' ', ':' }, StringSplitOptions.RemoveEmptyEntries);
-            NowTime.FullTime = fullTime;
+
+            if(GlobalVariables.TimeObtain == "1")
+            {
+                NowTime.FullTime = DateTime.Now.ToString("yyyy/MM/dd HH:mm:sss");
+            }
+            else if(GlobalVariables.TimeObtain == "2")
+            {
+                NowTime.FullTime = GetLocalNetworkTime();
+            }
+            else
+            {
+                NowTime.FullTime = GetBeijingTime().ToString();
+            }
+
+            string[] ArrayTime = NowTime.FullTime.Split(new char[] { '/', ' ', ':' }, StringSplitOptions.RemoveEmptyEntries);
             NowTime.YearMonthDay = ArrayTime[0] +"/"+ ArrayTime[1] +"/"+ ArrayTime[2];
             NowTime.HourMinuteSecond = ArrayTime[3] + "：" + ArrayTime[4] + "：" + ArrayTime[5];
         }
-    }
-
-    static class NowTime
-    {
-        /// <summary>
-        /// 年月日时分秒
-        /// </summary>
-        public static string FullTime;
-        /// <summary>
-        /// 年月日
-        /// </summary>
-        public static string YearMonthDay;
-        /// <summary>
-        /// 时分秒
-        /// </summary>
-        public static string HourMinuteSecond;
     }
 }

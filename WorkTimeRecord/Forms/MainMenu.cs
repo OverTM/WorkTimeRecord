@@ -24,7 +24,6 @@ namespace WorkTimeRecord
             }
             MainSettings settings = new MainSettings();
             settings.RemoveComments();
-            GetTime.GetSelectedTime();
             GlobalVariables.StartWorkTime = Settings.Default.StartWorkTime == "" ? "Not found" : Settings.Default.StartWorkTime;
             InitializeComponent();
         }
@@ -60,6 +59,12 @@ namespace WorkTimeRecord
             Settings.Default.StartWorkTime = GlobalVariables.StartWorkTime;
             Settings.Default.SavePath = GlobalVariables.SavePath;
             Settings.Default.Save();
+        }
+
+        public static void UpDataForm()
+        {
+            MainMenu mainMenu = new MainMenu();
+            mainMenu.StartTimeLabel2.Text = Get.GlobalVariables.StartWorkTime;
         }
     }
 }
