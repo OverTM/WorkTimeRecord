@@ -21,13 +21,13 @@ namespace Utility
             if (e.Reason == Microsoft.Win32.SessionSwitchReason.SessionLock)
             {
                 // 屏幕锁定
-                FileOperations.Start();
+                FileOperations.End(); 
             }
 
             else if (e.Reason == Microsoft.Win32.SessionSwitchReason.SessionUnlock)
             {
                 // 屏幕解锁
-                FileOperations.End();
+                FileOperations.Start();
             }
         }
 

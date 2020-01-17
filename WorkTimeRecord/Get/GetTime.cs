@@ -53,7 +53,7 @@ namespace Get
             p.Start();//启动程序
 
             //向cmd窗口发送输入信息
-            p.StandardInput.WriteLine(@"net time" + @GlobalVariables.LocalIP + "&exit");
+            p.StandardInput.WriteLine(@"net time " + @GlobalVariables.LocalIP + " &exit");
 
             p.StandardInput.AutoFlush = true;
             //p.StandardInput.WriteLine("exit");

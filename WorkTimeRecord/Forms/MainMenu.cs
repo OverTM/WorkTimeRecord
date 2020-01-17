@@ -164,5 +164,24 @@ namespace WorkTimeRecord
             }
         }
         #endregion
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            //DateTime dt;
+            //System.Globalization.DateTimeFormatInfo dtFormat = new System.Globalization.DateTimeFormatInfo();
+            //dtFormat.ShortDatePattern = "yyyy/MM/dd";
+            //dt = Convert.ToDateTime(GlobalVariables.StartWorkTime, dtFormat);
+            //dt = dt.AddHours(1);
+            //int i = DateTime.Now.CompareTo( dt );
+            //if (i > 0)
+            //{
+            //    MessageBox.Show("下班时间到了");
+            //    timer1.Enabled = false;
+            //}
+            //if(DateTime.Today==dt.Date)
+            //{
+            //    timer1.Enabled = true;
+            //}
+        }
     }
 }
