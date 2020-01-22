@@ -51,6 +51,7 @@ namespace WorkTimeRecord
         {
             this.Top = int.Parse(GlobalVariables.MainLocationY);
             this.Left = int.Parse(GlobalVariables.MainLocationX);
+            this.StartTimeLabel2.Text = Get.GlobalVariables.StartWorkTime;
             Utility.StatusMonitor.TriggerMethod();
         }
 
@@ -171,7 +172,7 @@ namespace WorkTimeRecord
             //System.Globalization.DateTimeFormatInfo dtFormat = new System.Globalization.DateTimeFormatInfo();
             //dtFormat.ShortDatePattern = "yyyy/MM/dd";
             //dt = Convert.ToDateTime(GlobalVariables.StartWorkTime, dtFormat);
-            //dt = dt.AddHours(1);
+            //dt = dt.AddHours(9);
             //int i = DateTime.Now.CompareTo( dt );
             //if (i > 0)
             //{

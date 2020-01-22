@@ -20,7 +20,7 @@ namespace Utility
         public void RestoreDefaultSettings()
         {
             GetIni.INIWriteValue(file, "path", "LogPath", "E:\\WorkSapce\\WorkTimeRecord\\setting_and_log    //路径");
-            GetIni.INIWriteItems(file, "get_time", "TimeObtain = 1    //1、本机时间  2、局域网时间  3、外网时间\0LocalIP = \\10.8.1.196   //可以是局域网内某IP地址或局域网内计算机名，也可以为空\0Website = https://www.baidu.com    //获取时间的网站");
+            GetIni.INIWriteItems(file, "get_time", "TimeObtain = 1    //1、本机时间  2、局域网时间  3、外网时间\0LocalIP = \\10.8.1.196   //可以是局域网内某IP地址或局域网内计算机名，也可以为net_time\0Website = https://www.baidu.com    //获取时间的网站");
             GetIni.INIWriteItems(file, "location", "MainLocationX = 1200 //屏幕左上角为原点，主窗体左上顶点的横轴坐标\0MainLocationY = 0  //屏幕左上角为原点，主窗体左上顶点的纵轴坐标");
             GetIni.INIWriteValue(file, "trigger_method", "TriggerMethod", "1    //1、通过系统锁屏与解锁触发 2、通过系统一段时间有无操作触发");
         }
