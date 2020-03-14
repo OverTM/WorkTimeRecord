@@ -42,20 +42,20 @@
             // StartTimeLabel1
             // 
             this.StartTimeLabel1.AutoSize = true;
-            this.StartTimeLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StartTimeLabel1.Font = new System.Drawing.Font("GB XingShu", 24.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.StartTimeLabel1.Location = new System.Drawing.Point(39, 38);
             this.StartTimeLabel1.Name = "StartTimeLabel1";
-            this.StartTimeLabel1.Size = new System.Drawing.Size(248, 38);
+            this.StartTimeLabel1.Size = new System.Drawing.Size(253, 33);
             this.StartTimeLabel1.TabIndex = 0;
             this.StartTimeLabel1.Text = "上班开始时间：";
             // 
             // StartTimeLabel2
             // 
             this.StartTimeLabel2.AutoSize = true;
-            this.StartTimeLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 24.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StartTimeLabel2.Font = new System.Drawing.Font("GB XingShu", 24.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.StartTimeLabel2.Location = new System.Drawing.Point(263, 38);
             this.StartTimeLabel2.Name = "StartTimeLabel2";
-            this.StartTimeLabel2.Size = new System.Drawing.Size(0, 38);
+            this.StartTimeLabel2.Size = new System.Drawing.Size(168, 33);
             this.StartTimeLabel2.TabIndex = 1;
             this.StartTimeLabel2.Text = Get.GlobalVariables.StartWorkTime;
             // 
@@ -73,19 +73,19 @@
             this.设置log路径ToolStripMenuItem,
             this.退出ToolStripMenuItem});
             this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(181, 70);
+            this.contextMenuStrip.Size = new System.Drawing.Size(101, 48);
             // 
             // 设置log路径ToolStripMenuItem
             // 
             this.设置log路径ToolStripMenuItem.Name = "设置log路径ToolStripMenuItem";
-            this.设置log路径ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.设置log路径ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.设置log路径ToolStripMenuItem.Text = "设置";
             this.设置log路径ToolStripMenuItem.Click += new System.EventHandler(this.设置log路径ToolStripMenuItem_Click);
             // 
             // 退出ToolStripMenuItem
             // 
             this.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
-            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.退出ToolStripMenuItem.Text = "退出";
             this.退出ToolStripMenuItem.Click += new System.EventHandler(this.退出ToolStripMenuItem_Click);
             // 

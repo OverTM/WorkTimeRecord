@@ -49,6 +49,8 @@ namespace Utility
                 MessageBox.Show("设置失败,请重新设置");
                 SelectFolder();
             }
+            Settings.Default.SavePath = GlobalVariables.SavePath;
+            Settings.Default.Save();
         }
         
         /// <summary>
@@ -65,7 +67,7 @@ namespace Utility
         }
 
         /// <summary>
-        /// 重启程序
+        /// 启动程序
         /// </summary>
         /// <param name="obj"></param>
         private static void Run(Object obj)
@@ -168,8 +170,11 @@ namespace Utility
                         kq.WriteLine("上班时间：" + GlobalVariables.StartWorkTime);
                         kq.Close();
                         Settings.Default.StartWorkTime = GlobalVariables.StartWorkTime;
+                        //WorkTimeRecord.MainMenu mainMenu = new WorkTimeRecord.MainMenu();
+                        //mainMenu.UpDataForm();
+                        Settings.Default.StartWorkTime = GlobalVariables.StartWorkTime;
                         Settings.Default.Save();
-                        WorkTimeRecord.MainMenu.UpDataForm();
+                        Restart();
                     }
                 }
             }
